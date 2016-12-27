@@ -1,0 +1,33 @@
+﻿<ContentDialog
+    x:Class="Contoso_Jobs.Views.CreateJobContentDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Contoso_Jobs.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Title="TITLE"
+    PrimaryButtonText="Create"
+    SecondaryButtonText="Cancel"
+    PrimaryButtonClick="ContentDialog_CreateButtonClick"
+    SecondaryButtonClick="ContentDialog_CancelButtonClick">
+
+    <Grid>
+        <StackPanel VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+            <TextBox Name="titleTextBox" Header="Title"/>
+            <TextBox Name="descriptionTextBox" Header="Description" TextWrapping="Wrap"  Height="100" />
+            <CheckBox Name="createAnotherCheckBox" Content="Create Another Job"/>
+
+            <TextBlock x:Name="errorTextBlock"/>
+
+            <!-- Content body -->
+            <TextBlock Name="body" TextWrapping="Wrap">
+                <TextBlock.Text>
+                    Create a job with a title and description.
+                </TextBlock.Text>
+            </TextBlock>
+        </StackPanel>
+
+
+    </Grid>
+</ContentDialog>

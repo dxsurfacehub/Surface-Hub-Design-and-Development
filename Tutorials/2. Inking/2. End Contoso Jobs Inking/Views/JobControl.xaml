@@ -1,0 +1,41 @@
+﻿<UserControl
+    x:Class="Contoso_Jobs.Views.JobControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Contoso_Jobs.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="300"
+    d:DesignWidth="400"
+    >
+    <Border x:Name="Border" BorderBrush="{Binding Parent.Highlight, ElementName=Border}" Background="{Binding Parent.Fill, ElementName=Border}" BorderThickness="1" Margin="0,2" >
+        <Grid d:DesignWidth="625.56" d:DesignHeight="84.092" Margin="5">
+            <Grid.RowDefinitions>
+                <RowDefinition Height=".3*"/>
+                <RowDefinition Height=".4*"/>
+                <RowDefinition Height=".3*" />
+            </Grid.RowDefinitions>
+            <TextBlock x:Name="TitleTextBlock" TextWrapping="Wrap" Text="{Binding Title}" FontSize="{StaticResource TitleFontSize}"/>
+            <Grid Grid.Row="1">
+                <TextBlock x:Name="DescriptionTextBlock"  Margin="0" 
+                               TextWrapping="Wrap" Text="{Binding Description}" Height="150"
+                               VerticalAlignment="Center" FontSize="{StaticResource TextFontSize}"/>
+                <InkCanvas x:Name="Annotation" Height="150"  />
+                <Ellipse Width="20" Height="20" VerticalAlignment="Top" HorizontalAlignment="Right" 
+                    Fill="Red" Margin="5, 0" PointerPressed="Ellipse_PointerPressed" />
+                <Ellipse Width="20" Height="20" VerticalAlignment="Top" HorizontalAlignment="Right" 
+                    Fill="Blue" Margin="30, 0" PointerPressed="Ellipse_PointerPressed" />
+                <Ellipse Width="20" Height="20" VerticalAlignment="Top" HorizontalAlignment="Right" 
+                    Fill="Black" Margin="55, 0" PointerPressed="Ellipse_PointerPressed" />
+
+            </Grid>
+            <Button Grid.Row="2" FontFamily="Segoe MDL2 Assets" Content="{Binding Parent.ProgressButtonText, ElementName=Border}" ToolTipService.ToolTip="Start work on this job"
+                                Background="Transparent" Click="Progress_Click" />
+            <Button Grid.Row="2" VerticalAlignment="Bottom" HorizontalAlignment="Right" Background="Transparent" 
+                            ToolTipService.ToolTip="Edit this job"
+                            FontFamily="Segoe MDL2 Assets" Content="&#xE70F;" Click="Edit_Click" />
+        </Grid>
+    </Border>
+
+</UserControl>
