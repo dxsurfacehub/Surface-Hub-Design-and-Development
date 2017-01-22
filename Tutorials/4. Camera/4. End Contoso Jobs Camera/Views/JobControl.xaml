@@ -1,0 +1,68 @@
+﻿<UserControl
+    x:Class="Contoso_Jobs.Views.JobControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Contoso_Jobs.Views"
+    xmlns:common="using:Contoso_Jobs.Common"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="300"
+    d:DesignWidth="400"
+    >
+    <UserControl.Resources>
+        <common:SoftwareBitmapConverter x:Key="SoftwareBitmapConverter"/>
+    </UserControl.Resources>
+
+    <Border x:Name="Border" BorderBrush="{Binding Parent.Highlight, ElementName=Border}" Background="{Binding Parent.Fill, ElementName=Border}" BorderThickness="1" Margin="0,2" >
+        <Grid Margin="5">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="150"/>
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Border HorizontalAlignment="Stretch" Height="15" 
+                Background="Transparent" VerticalAlignment="Top">
+                <Grid VerticalAlignment="Top">
+                    <Rectangle HorizontalAlignment="Stretch" Fill="Black" Height="2" 
+                        Margin="2,2,2,0" VerticalAlignment="Top" />
+                    <Rectangle HorizontalAlignment="Stretch" Fill="Black" Height="2" 
+                        Margin="2,6,2,0" VerticalAlignment="Top"/>
+                    <Rectangle HorizontalAlignment="Stretch" Fill="Black" Height="2"                 
+                        Margin="2,10,2,0" VerticalAlignment="Top"/>
+                </Grid>
+            </Border>
+            <TextBox x:Name="TitleTextBlock" Margin="0,15,0,0" TextWrapping="Wrap" 
+                     Text="{Binding Title, Mode=TwoWay}" BorderThickness="0"
+                     FontSize="{StaticResource TitleFontSize}"/>
+            <Grid Grid.Row="1">
+                <Image Name="Photo" Source="{Binding Photo, Converter={StaticResource SoftwareBitmapConverter} }" />
+                <TextBox x:Name="DescriptionTextBlock"  Margin="0" BorderThickness="0"
+                    TextWrapping="Wrap" Text="{Binding Description, Mode=TwoWay}" Height="150"
+                    VerticalAlignment="Center" FontSize="{StaticResource TextFontSize}"/>
+                <InkCanvas x:Name="Annotation" Height="150"  IsHitTestVisible="False" />
+                <Ellipse Width="20" Height="20" VerticalAlignment="Top" HorizontalAlignment="Right" 
+                    Fill="Red" Margin="5, 0" PointerPressed="Ellipse_PointerPressed" />
+                <Ellipse Width="20" Height="20" VerticalAlignment="Top" HorizontalAlignment="Right" 
+                    Fill="Blue" Margin="30, 0" PointerPressed="Ellipse_PointerPressed" />
+                <Ellipse Width="20" Height="20" VerticalAlignment="Top" HorizontalAlignment="Right" 
+                    Fill="Black" Margin="55, 0" PointerPressed="Ellipse_PointerPressed" />
+            </Grid>
+            <Grid Name="CameraControl" Visibility="Collapsed" Grid.Row="1" Grid.RowSpan="2">
+                <CaptureElement Name="PreviewControl" Stretch="UniformToFill" />
+                <Button VerticalAlignment="Bottom" HorizontalAlignment="Right" Background="White" 
+                    ToolTipService.ToolTip="Take picture"
+                    FontFamily="Segoe MDL2 Assets" Content="&#xE722;" Click="Camera_Click" />
+            </Grid>
+            <Button Grid.Row="2" VerticalAlignment="Bottom" HorizontalAlignment="Left"  
+                 Background="Transparent" ToolTipService.ToolTip="Take picture" 
+                 Tag="Left"
+                 FontFamily="Segoe MDL2 Assets" Content="&#xE722;" Click="Camera_Click" />
+            <Button Grid.Row="2" VerticalAlignment="Bottom" HorizontalAlignment="Right" 
+                 Background="Transparent" ToolTipService.ToolTip="Take Picture"
+                 Tag="Right" 
+                 FontFamily="Segoe MDL2 Assets" Content="&#xE722;" Click="Camera_Click" />
+        </Grid>
+    </Border>
+
+</UserControl>
