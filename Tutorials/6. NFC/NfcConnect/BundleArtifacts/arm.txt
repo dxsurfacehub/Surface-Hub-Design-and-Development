@@ -1,0 +1,2 @@
+MainPackage=C:\GIT\Microsoft\ContosoKanban\NfcConnect\NfcConnect\bin\ARM\Debug\NfcConnect_1.0.10.0_ARM_Debug.appx
+SymbolPackage=C:\GIT\Microsoft\ContosoKanban\NfcConnect\NfcConnect\AppPackages\NfcConnect_1.0.10.0_Debug_Test\NfcConnect_1.0.10.0_ARM_Debug.appxsym
